@@ -5,7 +5,10 @@ export const Layout = () => {
   return (
     <>
       <Header />
-      <Outlet />
+      {/* <main className="pt-[6rem]"> */}
+      <main className="absolute top-[6rem]">
+        <Outlet />
+      </main>
     </>
   );
 };
