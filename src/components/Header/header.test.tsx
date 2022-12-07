@@ -68,36 +68,39 @@ describe("header component", () => {
         expect(dialog).toBeInTheDocument();
       });
 
-      it("contains mobile nav", () => {
+      it("contains mobile nav", async () => {
+        user.setup();
         render(<Header />);
         const openMenuButton = screen.getByRole("button", {
           name: /open menu/i,
         });
-        user.click(openMenuButton);
+        await user.click(openMenuButton);
         const mobileNav = screen.getByRole("navigation", {
           name: /mobile nav/i,
         });
         expect(mobileNav).toBeInTheDocument();
       });
 
-      it("contains mobile menu list", () => {
+      it("contains mobile menu list", async () => {
+        user.setup();
         render(<Header />);
         const openMenuButton = screen.getByRole("button", {
           name: /open menu/i,
         });
-        user.click(openMenuButton);
+        await user.click(openMenuButton);
         const deskList = screen.getByRole("list", {
           name: /mobile list/i,
         });
         expect(deskList).toBeInTheDocument();
       });
 
-      it("contains mobile menu list items", () => {
+      it("contains mobile menu list items", async () => {
+        user.setup();
         render(<Header />);
         const openMenuButton = screen.getByRole("button", {
           name: /open menu/i,
         });
-        user.click(openMenuButton);
+        await user.click(openMenuButton);
         const deskListItems = screen.getAllByRole("listitem", {
           name: /mobile listitem/i,
         });
@@ -107,16 +110,17 @@ describe("header component", () => {
         );
       });
 
-      it("closes the dialog modal", () => {
+      it("closes the dialog modal", async () => {
+        user.setup();
         render(<Header />);
         const openMenuButton = screen.getByRole("button", {
           name: /open menu/i,
         });
-        user.click(openMenuButton);
+        await user.click(openMenuButton);
         const closeMenuButton = screen.getByRole("button", {
           name: /close menu/i,
         });
-        user.click(closeMenuButton);
+        await user.click(closeMenuButton);
 
         const dialog = screen.queryByRole("dialog");
         expect(dialog).not.toBeInTheDocument();
